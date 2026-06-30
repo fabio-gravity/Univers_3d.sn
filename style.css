@@ -342,7 +342,27 @@ footer{padding:40px 0;border-top:1px solid var(--line);position:relative;z-index
 .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
 .footer-row p{font-size:13px;color:var(--muted);}
 
+.float-whatsapp{
+  position:fixed;right:26px;bottom:26px;z-index:60;
+  width:58px;height:58px;border-radius:50%;
+  background:#25d366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(0,0,0,0.4);
+  transition:transform .3s, box-shadow .3s;
+}
+.float-whatsapp svg{width:28px;height:28px;position:relative;z-index:2;}
+.float-whatsapp:hover{transform:translateY(-4px) scale(1.06);box-shadow:0 12px 32px rgba(37,211,102,0.5);}
+.float-whatsapp-ping{
+  position:absolute;inset:0;border-radius:50%;background:#25d366;
+  animation:wa-ping 2.2s cubic-bezier(.4,0,.6,1) infinite;
+}
+@keyframes wa-ping{
+  0%{transform:scale(1);opacity:0.6;}
+  100%{transform:scale(1.8);opacity:0;}
+}
 @media(max-width:900px){
+  .float-whatsapp{right:18px;bottom:18px;width:52px;height:52px;}
+  .float-whatsapp svg{width:25px;height:25px;}
   .navlinks{display:none;}
   .problem-grid{grid-template-columns:1fr;}
   .service-row{grid-template-columns:1fr;}
@@ -355,4 +375,5 @@ footer{padding:40px 0;border-top:1px solid var(--line);position:relative;z-index
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none !important; transition:none !important;}
+  .float-whatsapp-ping{display:none;}
 }
